@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Event Map</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Concerts <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Arts & Theater</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Sports</a>
+                </li>
+            </ul>
+            <!-- <a class="navbar-brand" href="#">Sign In</a> -->
+            <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#loginModal">
+                Sign In
+            </button>
+        </div>
+    </nav>
+    <div id="color" class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h3 class="text-center">This Is Where You Want To Be. </h3>
+            <nav>
+                <form class="form-horizontal" class="form-inline justify-content-center">
+                    <div class="input-group input-group-lg mb-3">
+                        <div class="input-group-prepend form_prepend">
+                            <span class="input-group-text">
+                                <i class="fas fa-search"></i>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" id="userInput" placeholder="Search by City"
+                            aria-label="Search" aria-describedby="basic-addon1">
+                        <div class="input-group-append">
+                            <button class="btn btn-secondary" id="userSearch" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+            </nav>
+            <div class="text-center container">
+                <button type="button" class="btn
+                    btn-outline-dark btn-xl" id="btnOne" value="John-Mayer">John Mayer</button>
+                <button type="button" class="btn
+                    btn-outline-dark btn-xl" id="btnTwo" value="dallas-mavericks">Dallas Mavericks</button>
+                <button type="button" class="btn btn-outline-dark btn-xl" id="btnThree" value="Texas-Rangers">Texas Rangers</button>
+                <button type="button" class="btn btn-outline-dark btn-xl" id="btnFour" value="Hamilton">Hamilton</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="wrapper">
+        <div class="events"></div>
+    </div>
+
+    <div id="map"></div>
+
+    <div class="card mt-3 mr-3 ml-3">
+        <h5 class="card-header">Events</h5>
+        <div class="row mr-1 ml-1">
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" id="loginAccount" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="col-11 modal-title text-center" id="exampleModalLongTitle">Welcome, Please sign in</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="input-group input-group-lg mb-3">
+                            <div class="input-group-prepend form_prepend">
+                                <span class="input-group-text">
+                                    <span class="fa fa-user"></span>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" id="userEmail" placeholder="Email" aria-label="Username"
+                                aria-describedby="basic-addon1">
+                        </div>
+                        <div class="input-group input-group-lg mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <span class="fa fa-lock"></span>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" id="userPassword" placeholder="Password" aria-label="password"
+                                aria-describedby="basic-addon1">
+                        </div>
+                        <a href="#" class="float-right">Forgot Password?</a>
+                    </form>
+                    <button type="button" class="btn btn-primary btn-lg btn-block" id="userLogin">Sign in</button>
+                    <p class="col-12 mt-2 text-center">Do not have an account? <a href="#" id="newRegister">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="registerModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" id="userRegister" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="col-11 modal-title text-center" id="exampleModalLongTitle">Register</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="register-form">
+                    <div class="input-group input-group-lg mb-3">
+                        <div class="input-group-prepend form_prepend">
+                            <span class="input-group-text">
+                                <span class="fa fa-user"></span>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" id="userEmail" placeholder="Email" aria-label="Username"
+                            aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group input-group-lg mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <span class="fa fa-lock"></span>
+                            </span>
+                        </div>
+                        <input type="text" class="form-control" id="userPassword" placeholder="Password" aria-label="password"
+                            aria-describedby="basic-addon1">
+                    </div>
+                    <div class="input-group input-group-lg mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <span class="fa fa-lock"></span>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Confirm Password" aria-label="password"
+                                aria-describedby="basic-addon1">
+                        </div>
+                </form>
+                <button type="button" class="btn btn-primary btn-lg btn-block" id="confirmUser">Register</button>
+                <p class="col-12 mt-2 text-center">Have an account?<a href="#">Sign in</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="https://www.gstatic.com/firebasejs/5.10.1/firebase.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="tonyScript.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC9FBKjH7MSZF_yay0oLkFE3vK7qMr4gYY
+        &libraries=places&callback=initMap"
+    async defer></script>
+
+</body>
+
+</html>
