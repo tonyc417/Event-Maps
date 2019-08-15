@@ -1,0 +1,23 @@
+{
+  "name": "eventmaster",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000E\u0000v\u0000e\u0000n\u0000t\u0000-\u0000M\u0000a\u0000p\u0000s\u0000\r\u0000 \u0000",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tonyc417/Event-Maps.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tonyc417/Event-Maps/issues"
+  },
+  "homepage": "https://github.com/tonyc417/Event-Maps#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
