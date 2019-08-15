@@ -12,4 +12,4 @@ app.get("/", (req, res) => {
     res.send("index");
 })
 
-app.listen(PORT, console.log('Server stared on ' + PORT));
+app.listen(PORT, console.log('Server started on ' + PORT));
